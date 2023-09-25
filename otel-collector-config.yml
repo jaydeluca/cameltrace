@@ -1,11 +1,4 @@
 receivers:
-  jaeger:
-    protocols:
-      grpc:
-  jaeger/withendpoint:
-    protocols:
-      grpc:
-        endpoint: 0.0.0.0:14260
 
   otlp:
     protocols:
@@ -25,6 +18,6 @@ processors:
 service:
   pipelines:
     traces:
-      receivers: [otlp, jaeger]
+      receivers: [otlp]
       processors: [batch]
       exporters: [otlp]
