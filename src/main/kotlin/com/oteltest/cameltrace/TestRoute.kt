@@ -10,5 +10,6 @@ class TestRoute : RouteBuilder() {
         from("pulsar:persistent://public/default/my-topic?serviceUrl=pulsar://127.0.0.1:6650")
             .routeId("pulsarRoute")
             .log("Received message: \${body}")
+            .end()
     }
 }

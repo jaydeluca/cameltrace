@@ -17,6 +17,9 @@ docker compose up -d
 # read
 ./pulsar-client read persistent://public/default/my-topic --queue-size 1
 
+#  rebuild agent
+docker compose up -d --build datadog --remove-orphans
+
 ```
 
 
