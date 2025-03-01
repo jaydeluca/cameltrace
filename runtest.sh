@@ -1,15 +1,18 @@
 #!/bin/bash
 
-docker compose down
-docker compose up -d
+#docker compose down
+#docker compose up -d
 
-./gradlew clean build -x test
+cd camel || exit
+#./gradlew clean build -x test
 
-java -javaagent:opentelemetry-javaagent.jar \
+java -javaagent:opentelemetry-javaagent-2-13-3.jar \
      -Dotel.resource.attributes=service.name=test-service \
      -Dotel.traces.exporter=otlp \
-     -Dotel.exporter.otlp.endpoint=http://127.0.0.1:4317 \
+     -Dotel.logs.exporter=none \
+     -Dotel.exporter.otlp.endpoint=http://127.0.0.1:4318 \
      -jar build/libs/cameltrace-0.0.1-SNAPSHOT.jar
+
 
 #java -javaagent:dd-java-agent-1.20.1.jar \
 #     -Ddd.service=camel-trace \
