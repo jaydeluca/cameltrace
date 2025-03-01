@@ -4,7 +4,7 @@
 #docker compose up -d
 
 ./gradlew clean build -x test
-#
+
 java -javaagent:opentelemetry-javaagent.jar \
      -Dotel.resource.attributes=service.name=test-service \
      -Dotel.traces.exporter=otlp \
